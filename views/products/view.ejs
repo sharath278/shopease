@@ -1,0 +1,88 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-4">
+
+        <div class="row">
+
+            <div class="col-md-5">
+
+                <img src="<%= product.image %>"
+                    alt="<%= product.title %>"
+                    class="img-fluid product-view-img">
+
+            </div>
+
+            <div class="col-md-7">
+
+                <h2 class="mb-3"><%= product.title %></h2>
+
+                <h3 class="text-success mb-3">
+                    ₹ <%= product.price.toLocaleString("en-IN") %>
+                </h3>
+
+                <p class="text-muted">
+                    <%= product.description %>
+                </p>
+
+                <hr>
+
+                <p>
+                    <strong>Category :</strong>
+                    <%= product.category %>
+                </p>
+
+                <p>
+                    <strong>Stock :</strong>
+                    <%= product.stock %>
+                </p>
+
+                <p>
+                    <strong>Seller :</strong>
+                    <%= product.seller.username %>
+                </p>
+                 
+               <% if( loginuser && loginuser.equals(product.seller._id)) {%>
+                <div class="mt-4 d-flex gap-3">
+
+                    <a href="/products/<%= product._id %>/edit"
+                        class="btn btn-warning">
+                        Edit Product
+                    </a>
+
+                    <form
+                        action="/products/<%= product._id %>?_method=DELETE"
+                        method="POST">
+
+                        <button
+                            class="btn btn-danger">
+                            Delete Product
+                        </button>
+             
+                    </form>
+
+               
+
+                </div>
+                     <% } %>
+                     <br>
+                       <% if(!loginuser || !loginuser.equals(product.seller._id)) { %>
+                           <form
+                        action="/products/<%= product._id %>/cart"
+                        method="POST">
+
+                        <button
+                            class="btn btn-primary">
+                             Add to Cart
+                        </button>
+             
+                    </form>
+                    <%}%>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">All Products</h2>
+
+    <div class="row g-4">
+
+        <% for(let product of allproducts){ %>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+
+                <a href="/products/<%= product._id %>" class="text-decoration-none">
+
+                    <div class="card product-card h-100">
+
+                        <img
+                            src="<%= product.image %>"
+                            class="card-img-top product-img"
+                            alt="<%= product.title %>"
+                        >
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <%= product.title %>
+                            </h5>
+
+                            <h6 class="product-price">
+                                ₹ <%= product.price.toLocaleString("en-IN") %>
+                            </h6>
+
+                            <p class="product-category">
+                                <%= product.category %>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>

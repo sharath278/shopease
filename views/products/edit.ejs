@@ -1,0 +1,37 @@
+<% layout("/layouts/boilerplate") %>
+ <div class="container offset-3 col-6">
+        <h3>You can edit the product </h3>
+        <form action="/products/<%=product.id%>?_method=put" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input name="title" placeholder="Enter Title" class="form-control" value="<%=product.title %>" >
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">description:</label>
+                <textarea name="description" placeholder="Enter description" class="form-control" style="height: 150px;" ><%=product.description%></textarea>
+            </div>
+          
+            <div class="mb-3">
+                <label for="image" class="form-label">Image :</label>
+                <input name="image" placeholder="Enter URL" class="form-control" value="<%=product.image.url%>">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Enter the Category</label>
+                <input name="category" placeholder="Enter category" class="form-control " value="<%=product.category%>"> 
+            </div>
+             <div class="row">
+                 <div class="mb-3 col-7">
+                <label for="price" class="form-label">Price :</label>
+                <input name="price" placeholder="Enter Price" class="form-control" value="<%=product.price%>">
+            </div>
+            <div class="mb-3 col-5">
+                <label for="stock" class="form-label">Enter Stock</label>
+                <input name="stock" placeholder="Enter Stock" class="form-control" value="<%=product.stock%>">
+            </div>
+             </div>
+             
+            <button type="submit" class="btn btn-outline-success">Edit Product details</button>
+
+        </form>
+
+    </div>

@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold" href="/">
+      🛒 ShopEase
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav me-auto">
+
+        <li class="nav-item">
+          <a class="nav-link " href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        
+
+     
+        <li class="nav-item">
+          <a class="nav-link" href="/products/new">Add NewProduct</a>
+        </li>
+
+      </ul>
+
+      <form class="d-flex me-3">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search products">
+        <button class="btn btn-primary">
+          Search
+        </button>
+      </form>
+
+      <ul class="navbar-nav">
+        <% if(!loginuser) { %>
+            <li class="nav-item">
+          <a class="nav-link" href="/signup">Signup</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+         <% } %>
+        
+
+        
+        
+         <% if(loginuser){ %>
+           <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <%  } %>
+         
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/cart">
+            🛒 Cart
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>

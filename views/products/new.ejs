@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate") %>
+    <div class="container offset-3 col-6">
+        <h3>Add a New Product </h3>
+        <form action="/products" method="post" class="needs-validation" novalidate >
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input name="title" placeholder="Enter Title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">description:</label>
+                <textarea name="description" placeholder="Enter description" class="form-control"
+                    style="height: 150px;" required ></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image :</label>
+                <input name="image" placeholder="Enter URL" class="form-control"  required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Enter the Category</label>
+                <input name="category" placeholder="Enter category" class="form-control"  required>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-7">
+                    <label for="price" class="form-label">Price :</label>
+                    <input name="price" placeholder="Enter Price" class="form-control"  required>
+                </div>
+                <div class="mb-3 col-5">
+                    <label for="stock" class="form-label">Enter Stock</label>
+                    <input name="stock" placeholder="Enter Stock" class="form-control"  required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Add New Item</button>
+
+        </form>
+
+    </div>
