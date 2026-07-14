@@ -51,6 +51,7 @@ Features
 ⬜ Clear Cart
 ⬜ Order History
 ⬜ View Order Details
+
 👤 Phase 5: User Profile
 ⬜ Profile Page
 ⬜ Edit Profile
@@ -102,16 +103,23 @@ User Management
 ⬜ Price Filter
 ⬜ Stock Filter
 ⬜ Pagination
+
+
 ⭐ Phase 8: Reviews
 ⬜ Rate Product
 ⬜ Review Product
 ⬜ Edit Review
 ⬜ Delete Review
 ⬜ Average Rating
+
+
 ❤️ Phase 9: Wishlist (Optional)
 ⬜ Add to Wishlist
 ⬜ Remove
 ⬜ Move to Cart
+
+
+
 🖼️ Phase 10: Cloudinary
 ⬜ Upload Images
 ⬜ Delete Images

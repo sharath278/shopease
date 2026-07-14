@@ -49,4 +49,55 @@ const showcart = async (req,res)=>{
     res.render("./cart/view.ejs",{cart});  
 }
 
-module.exports = { addtocart ,showcart};
+
+
+
+const increaseQuantity = async (req,res)=>{
+    const {productid} = req.params;
+     const cart = await Cart.findOne({user : req.user._id});
+     const item = await cart.items.find((item)=>{
+        return item.product.equals(productid);
+     });
+     item.quantity++;
+     await cart.save();
+    res.redirect("/cart");
+};
+
+
+
+const decreaseQuantity =  async (req, res) => {
+    const { productid } = req.params;
+
+    const cart = await Cart.findOne({
+        user: req.user._id,
+    });
+
+    const item = cart.items.find((item) => {
+        return item.product.equals(productid);
+    });
+
+    if (item.quantity > 1) {
+        item.quantity--;
+    } else {
+        cart.items = cart.items.filter((item) => {
+            return !item.product.equals(productid);
+        });
+    }
+
+    await cart.save();
+    res.redirect("/cart");
+};
+
+
+const removeItem = async (req,res)=>{
+    let {productid} = req.params;
+    let cart = await Cart.findOne({user : req.user._id});
+     cart.items = cart.items.filter((item) => {
+            return !item.product.equals(productid);
+        });
+       await cart.save();
+    res.redirect("/cart");
+};
+
+
+module.exports = { addtocart ,showcart,increaseQuantity,decreaseQuantity,removeItem};

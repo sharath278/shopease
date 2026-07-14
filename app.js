@@ -70,7 +70,6 @@ app.get("/",(req,res)=>{
 
 
 
-
 app.use("/",users);
 app.use("/",products);
 app.use("/",cart);

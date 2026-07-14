@@ -44,15 +44,34 @@
                                 ₹ <%= item.product.price.toLocaleString("en-IN") %>
                             </h5>
 
-                            <p>
-                                <strong>Quantity:</strong>
-                                <%= item.quantity %>
-                            </p>
+                            <!-- Quantity Controls -->
+                            <div class="d-flex align-items-center gap-2 my-3">
+
+                                <form action="/cart/<%= item.product._id %>/decrease?_method=PATCH" method="POST">
+                                    <button class="btn btn-outline-secondary btn-sm">−</button>
+                                </form>
+
+                                <span class="fw-bold fs-5">
+                                    <%= item.quantity %>
+                                </span>
+
+                                <form action="/cart/<%= item.product._id %>/increase?_method=PATCH" method="POST">
+                                    <button class="btn btn-outline-secondary btn-sm">+</button>
+                                </form>
+
+                            </div>
 
                             <h6>
                                 Subtotal :
                                 ₹ <%= (item.product.price * item.quantity).toLocaleString("en-IN") %>
                             </h6>
+
+                            <!-- Remove Button -->
+                            <form action="/cart/<%= item.product._id %>?_method=DELETE" method="POST" class="mt-3">
+                                <button class="btn btn-outline-danger">
+                                    Remove
+                                </button>
+                            </form>
 
                         </div>
 
