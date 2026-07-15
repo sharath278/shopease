@@ -15,10 +15,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
 
+      <!-- Left Side -->
       <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
-          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
 
         <li class="nav-item">
@@ -28,15 +29,24 @@
         <li class="nav-item">
           <a class="nav-link" href="/categories">Categories</a>
         </li>
-        
 
-     
+        <% if(loginuser){ %>
         <li class="nav-item">
-          <a class="nav-link" href="/products/new">Add NewProduct</a>
+          <a class="nav-link" href="/orders">My Orders</a>
         </li>
+        <% } %>
+
+        <% if(loginuser && loginuser.role === "admin"){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/new">
+            Add New Product
+          </a>
+        </li>
+        <% } %>
 
       </ul>
 
+      <!-- Search -->
       <form class="d-flex me-3">
         <input
           class="form-control me-2"
@@ -47,33 +57,34 @@
         </button>
       </form>
 
+      <!-- Right Side -->
       <ul class="navbar-nav">
-        <% if(!loginuser) { %>
-            <li class="nav-item">
+
+        <% if(!loginuser){ %>
+
+        <li class="nav-item">
           <a class="nav-link" href="/signup">Signup</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
-         <% } %>
-        
 
-        
-        
-         <% if(loginuser){ %>
-           <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        <%  } %>
-         
-
+        <% } else { %>
 
         <li class="nav-item">
           <a class="nav-link" href="/cart">
             🛒 Cart
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            Logout
+          </a>
+        </li>
+
+        <% } %>
 
       </ul>
 

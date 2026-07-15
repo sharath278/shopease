@@ -65,4 +65,19 @@ const checkoutOrder =  async (req, res) => {
 };
 
 
-module.exports = {checkoutOrder};
+ const getallOrders = async (req,res)=>{
+    const orders = await Order.find({user : req.user._id}).populate("items.product");
+    res.render("./orders/index.ejs",{orders});
+};
+
+ const getOrder =  async (req,res)=>{
+    const {id} = req.params;
+   const order = await Order.findOne({
+    _id: id,
+    user: req.user._id,
+ }).populate("items.product");
+    res.render("./orders/view.ejs",{order});
+};
+
+
+module.exports = {checkoutOrder,getallOrders,getOrder};

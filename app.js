@@ -64,6 +64,9 @@ app.use(Locals);
 
 
 
+
+
+
 app.get("/", (req, res) => {
     res.render('./home.ejs');
 })
