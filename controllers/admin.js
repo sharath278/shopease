@@ -25,6 +25,7 @@ const updateStatus = async (req,res)=>{
      await Order.findByIdAndUpdate(id,
         {status : req.body.status}
      );
+     req.flash("success","order status updated successfully");
      res.redirect(`/admin/orders/${id}`);
 };
 
