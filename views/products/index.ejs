@@ -1,12 +1,17 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="container mt-4">
-
+     <%  if(products.length>0){ %>
     <h2 class="text-center mb-4">All Products</h2>
+           <% } %>
 
     <div class="row g-4">
 
-        <% for(let product of allproducts){ %>
+       <%  if(products.length==0){ %>
+             <h2 class="text-center mb-4">No products available to this category </h2>
+              <% } %>
+
+        <% for(let product of products){ %>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
 

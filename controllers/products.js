@@ -3,8 +3,15 @@ const jProductSchema = require("../Schema");
 const MyError = require("../utils/error")
 
 const getProducts = async (req,res)=>{
-      const allproducts = await Product.find();
-      res.render("./products/index.ejs",{allproducts});
+     const token = req.query.category;
+     let products;
+     if(token){
+         products = await Product.find({category : token});
+     }
+     else{
+        products = await Product.find();
+     }
+      res.render("./products/index.ejs",{products});
 }
 
 const newproductForm = (req,res)=>{
