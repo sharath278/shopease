@@ -1,0 +1,184 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        📦 Order Details
+    </h2>
+
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+
+            <h5 class="mb-3">
+                Customer Information
+            </h5>
+
+            <p>
+                <strong>Name :</strong>
+                <%= order.user.username %>
+            </p>
+
+            <p>
+                <strong>Email :</strong>
+                <%= order.user.email %>
+            </p>
+
+            <p>
+                <strong>Order ID :</strong>
+                <%= order._id %>
+            </p>
+
+            <p>
+                <strong>Placed On :</strong>
+                <%= order.createdAt.toDateString() %>
+            </p>
+
+            <hr>
+
+            <h4 class="mb-4">
+                Ordered Products
+            </h4>
+
+            <% for(let item of order.items){ %>
+
+                <div class="row align-items-center mb-4">
+
+                    <div class="col-md-3">
+
+                        <img
+                            src="<%= item.product.image %>"
+                            class="img-fluid rounded"
+                            alt="product">
+
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <h4>
+                            <%= item.product.title %>
+                        </h4>
+
+                        <p class="text-muted">
+                            <%= item.product.description %>
+                        </p>
+
+                        <p>
+                            <strong>Price :</strong>
+                            ₹ <%= item.priceAtPurchase.toLocaleString("en-IN") %>
+                        </p>
+
+                        <p>
+                            <strong>Quantity :</strong>
+                            <%= item.quantity %>
+                        </p>
+
+                        <h6 class="text-success">
+                            Subtotal :
+                            ₹ <%= (item.priceAtPurchase * item.quantity).toLocaleString("en-IN") %>
+                        </h6>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+            <% } %>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+
+                <h3>
+                    Total Amount
+                </h3>
+
+                <h3 class="text-success">
+                    ₹ <%= order.totalAmount.toLocaleString("en-IN") %>
+                </h3>
+
+            </div>
+
+            <hr>
+
+            <form
+                action="/admin/orders/<%= order._id %>?_method=PATCH"
+                method="POST">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-8">
+
+                        <label class="form-label">
+                            Update Order Status
+                        </label>
+
+                        <select
+                            class="form-select"
+                            name="status">
+
+                            <option
+                                value="Pending"
+                                <%= order.status==="Pending" ? "selected" : "" %>>
+                                Pending
+                            </option>
+
+                            <option
+                                value="Confirmed"
+                                <%= order.status==="Confirmed" ? "selected" : "" %>>
+                                Confirmed
+                            </option>
+
+                            <option
+                                value="Shipped"
+                                <%= order.status==="Shipped" ? "selected" : "" %>>
+                                Shipped
+                            </option>
+
+                            <option
+                                value="Delivered"
+                                <%= order.status==="Delivered" ? "selected" : "" %>>
+                                Delivered
+                            </option>
+
+                            <option
+                                value="Cancelled"
+                                <%= order.status==="Cancelled" ? "selected" : "" %>>
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 text-end mt-4">
+
+                        <button
+                            class="btn btn-success">
+
+                            Update Status
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <div class="mt-4">
+
+                <a
+                    href="/admin/orders"
+                    class="btn btn-secondary">
+
+                    ← Back to Orders
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

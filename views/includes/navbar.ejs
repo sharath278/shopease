@@ -36,13 +36,16 @@
         </li>
         <% } %>
 
-        <% if(loginuser && loginuser.role === "admin"){ %>
+
+       <% if(loginuser && loginuser.role === "admin"){ %>
         <li class="nav-item">
-          <a class="nav-link" href="/products/new">
-            Add New Product
+          <a class="nav-link" href="/admin">
+            Admin 
           </a>
         </li>
         <% } %>
+
+        
 
       </ul>
 

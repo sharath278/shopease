@@ -18,6 +18,7 @@ const users = require("./routes/users");
 const products = require("./routes/products");
 const orders = require("./routes/orders");
 const cart = require("./routes/cart");
+const admin = require("./routes/admin");
 const errorHandler = require("./middleware/error");
 
 
@@ -66,7 +67,6 @@ app.use(Locals);
 
 
 
-
 app.get("/", (req, res) => {
     res.render('./home.ejs');
 })
@@ -79,6 +79,7 @@ app.use("/", users);
 app.use("/", products);
 app.use("/", cart);
 app.use("/",orders);
+app.use("/",admin);
 
 app.use(errorHandler);
 

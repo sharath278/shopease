@@ -124,6 +124,8 @@ User Management
 ⬜ Upload Images
 ⬜ Delete Images
 ⬜ Replace Images
+
+
 💳 Phase 11: Payments
 
 We can use:
@@ -149,6 +151,9 @@ Order
 📧 Phase 12: Emails
 ⬜ Order Confirmation
 ⬜ Welcome Email
+
+
+
 🚀 Phase 13: Deployment
 ⬜ MongoDB Atlas
 ⬜ Render/Railway
